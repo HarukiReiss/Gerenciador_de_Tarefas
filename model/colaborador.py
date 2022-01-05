@@ -7,5 +7,4 @@ class Colaborador():
 
     def get_dados_lista(self):
         lista_dados = [self.nome, self.email]
-
         return lista_dados
