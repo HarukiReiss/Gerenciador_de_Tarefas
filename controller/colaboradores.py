@@ -1,4 +1,5 @@
 from model.colaborador import Colaborador
+#from controller.cad_colab import CadColab
 import model.colaborador_dao as colaborador_dao
 from qt_core import *
 
@@ -10,6 +11,9 @@ class Colaboradores(QWidget):
         super().__init__()
         uic.loadUi('view/colaboradores.ui', self)
 
+        self.save.clicked.connect(self.save_colab)
+        self.excluir.clicked.connect(self.del_colab)
+
         self.carregar_dados()
 
         self.tabela_colab.verticalHeader().setVisible(False)
@@ -19,8 +23,50 @@ class Colaboradores(QWidget):
         self.tabela_colab.setEditTrigger(QTableWidget.NoEditTrigger)
         self.tabela_colab.setSelectionBehavior(QTableWidget.SelectRows)
 
-        self.tabela_colab.clicked.connect(self.on_click)
+        self.tabela.clicked.connect(self.click)
     
     def carregar_dados(self):
-        pass
+        self.lista_colab = colaborador_dao.selectAll()
+
+        self.limpar()
+        self.tabela.setRowCount(0)
+        for c in self.lista_colab:
+            self.addLine(c)
+
+    def addLine(self, c):
+        rowCount = self.tabela.rowCount()
+        self.tabela.insertRow(rowCount)
+
+        id = QTableWidgetItem(str(c.id))
+        nome = QTableWidgetItem(c.nome)
+        email = QTableWidgetItem(c.email)
+
+        self.tabela.setItem(rowCount, 0, id)
+        self.tabela.setItem(rowCount, 1, nome)
+        self.tabela.setItem(rowCount, 2, email)
+
+    def click(self):
+        clicked_row = self.tabela.currentRow()
+        self.colab_atual = self.lista_colab[clicked_row]
+        self.nome_edit.setText(self.colab_atual.nome)
+        self.email_edit.setText(self.colab_atual.email)
+
+    def save_colab(self):
+        nome = self.nome_edit.text()
+        email = self.email.edit.text()
+        colab = Colaborador(None, nome, email)
+
+        if nome != '' and email != '':
+            if self.colab_atual == None:
+                colaborador_dao.insert(colab)
+            else:
+                colab.id = self.colab_atual.id
+                colaborador_dao.update(colab)
+
+    def del_colab(self):
+        if self.colab_atual != None:
+            colaborador_dao.delete(self.colab_atual.id)
+            self.carregar_dados()
+
+
         
