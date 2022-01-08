@@ -1,15 +1,16 @@
 from model.colaborador import Colaborador
-#from controller.cad_colab import CadColab
 import model.colaborador_dao as colaborador_dao
 from qt_core import *
 
 class Colaboradores(QWidget):
-    lista_colab = []
-    colab_atual = None
+    
 
     def __init__(self):
         super().__init__()
         uic.loadUi('view/colaboradores.ui', self)
+
+        lista_colab = []
+        colab_atual = None
 
         self.save.clicked.connect(self.save_colab)
         self.excluir.clicked.connect(self.del_colab)

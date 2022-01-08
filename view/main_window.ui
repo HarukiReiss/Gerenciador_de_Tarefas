@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>714</width>
     <height>600</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
@@ -76,16 +76,81 @@
      </layout>
     </item>
     <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <widget class="QWidget" name="page">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>Projetos</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QPushButton" name="pushButton">
+               <property name="text">
+                <string>Novo Projeto</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox">
+               <property name="text">
+                <string>Apresentar projetos finalizados</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QScrollArea" name="scrollArea">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>656</width>
+                <height>378</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <item>
+                <layout class="QVBoxLayout" name="project_layout"/>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_2"/>
+     </widget>
+    </item>
+    <item>
      <widget class="Line" name="line">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QStackedWidget" name="painel">
-      <widget class="QWidget" name="page"/>
-      <widget class="QWidget" name="page_2"/>
      </widget>
     </item>
    </layout>
@@ -95,7 +160,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>714</width>
      <height>21</height>
     </rect>
    </property>
