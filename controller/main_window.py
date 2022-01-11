@@ -29,6 +29,8 @@ class MainWindow(QMainWindow):
             self.project_layout.addWidget(CardProjeto(p, self))
 
     def openWindow(self, i):
+        if i == 0:
+            self.load_project()
         self.stackedWidget.setCurrentIndex(i)
 
     def new_proj(self, proj=None):

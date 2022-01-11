@@ -4,7 +4,7 @@ import model.projeto_dao as proj_dao
 from model.projeto import Projeto
 
 class Projetos(QWidget):
-    def __init__(self, parent, projeto):
+    def __init__(self, parent, projeto=None):
         super().__init__()
         uic.loadUi('view/projetos.ui', self)
 
@@ -41,14 +41,14 @@ class Projetos(QWidget):
         if self.isExist(c) == False:
             self.lista_add_colabs.append(c)
             self.colab_del.addItem(self.lista_colabs[i].nome)
-            self.colab_qtd.setText({len(self.lista_add_colabs)})
+            self.colab_qtd.setText(f'{len(self.lista_add_colabs)}')
 
     def delColab(self):
         i = self.colab_del.currentIndex()
         if i >= 0:
             self.lista_add_colabs.remove(self.lista_add_colabs[i])
             self.colab_del.removeItem(i)
-            self.colab_qtd_setText({len(self.lista_add_colabs)})
+            self.colab_qtd_setText(f'{len(self.lista_add_colabs)}')
 
     def isExist(self, colab):
         for c in self.lista_add_colabs:
@@ -72,7 +72,8 @@ class Projetos(QWidget):
         self.parent.openWindow(0)
 
     def delProject(self):
-        pass
+        if self.p != False:
+            print('Excluir projeto com id = ',self.p.id)
 
 
 

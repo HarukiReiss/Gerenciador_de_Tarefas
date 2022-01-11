@@ -54,7 +54,7 @@ def selectAll():
     try:
         conn = database.connect()
         cursor = conn.cursor()
-        sql = """SELECT * FROM Colaboradores WHERE deletado = 0 ORDER BY upper(nome);"""
+        sql = """SELECT * FROM Colaboradores ORDER BY upper(nome);"""
         cursor.execute(sql)
         result = cursor.fetchall()
         for r in result:

@@ -9,8 +9,8 @@ class Colaboradores(QWidget):
         super().__init__()
         uic.loadUi('view/colaboradores.ui', self)
 
-        lista_colab = []
-        colab_atual = None
+        self.lista_colab = []
+        self.colab_atual = None
 
         self.save.clicked.connect(self.save_colab)
         self.excluir.clicked.connect(self.del_colab)
@@ -31,16 +31,16 @@ class Colaboradores(QWidget):
 
         self.limpar()
         self.tabela_colab.setRowCount(0)
-        for c in self.lista_colab:
-            self.addLine(c)
+        for p in self.lista_colab:
+            self.addLine(p)
 
-    def addLine(self, c):
+    def addLine(self, p):
         rowCount = self.tabela_colab.rowCount()
         self.tabela_colab.insertRow(rowCount)
 
-        id = QTableWidgetItem(str(c.id))
-        nome = QTableWidgetItem(c.nome)
-        email = QTableWidgetItem(c.email)
+        id = QTableWidgetItem(str(p.id))
+        nome = QTableWidgetItem(p.nome)
+        email = QTableWidgetItem(p.email)
 
         self.tabela_colab.setItem(rowCount, 0, id)
         self.tabela_colab.setItem(rowCount, 1, nome)
@@ -63,6 +63,8 @@ class Colaboradores(QWidget):
             else:
                 colab.id = self.colab_atual.id
                 colaborador_dao.update(colab)
+
+            self.carregar_dados()
 
     def limpar(self):
         self.nome_edit.clear()
