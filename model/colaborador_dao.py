@@ -3,11 +3,11 @@ from model import database
 
 def createTableColabs(cursor):
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTIS "Colaboradores" (
+    CREATE TABLE IF NOT EXISTS "Colaboradores" (
         "id"    INTERGER,
         "nome"  TEXT NOT NULL,
         "email" TEXT NOT NULL,
-        PRIMARY KEY("id" AUTOINCREMENTE));""")
+        PRIMARY KEY("id" AUTOINCREMENT));""")
 
 def insert(colab):
     try:

@@ -1,13 +1,12 @@
-from typing_extensions import Self
 from qt_core import *
 import model.colaborador_dao as colab_dao
 import model.projeto_dao as proj_dao
 from model.projeto import Projeto
 
-class Projeto(QWidget):
-    def __init__(self, parent, projeto=None):
+class Projetos(QWidget):
+    def __init__(self, parent, projeto):
         super().__init__()
-        uic.loadUi('view/projeto.ui', self)
+        uic.loadUi('view/projetos.ui', self)
 
         self.parent = parent
         self.p = projeto
@@ -15,7 +14,7 @@ class Projeto(QWidget):
         self.lista_add_colabs = []
         
         
-        self.carregar_dados()
+        self.carrega_dados()
 
         self.add_colab.clicked.connect(self.addColab)
         self.del_colab.clicked.connect(self.delColab)

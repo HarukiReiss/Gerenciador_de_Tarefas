@@ -1,6 +1,6 @@
 from controller.card_projeto import CardProjeto
 from controller.colaboradores import Colaboradores
-from controller.projeto import Projeto
+from controller.projetos import Projetos
 import model.projeto_dao as proj_dao
 from qt_core import *
 
@@ -26,13 +26,13 @@ class MainWindow(QMainWindow):
         
         self.lista_projetos = proj_dao.selectAll()
         for p in self.lista_projetos:
-            self.project_layout.addWidget("""CardProjeto"""(p, self))
+            self.project_layout.addWidget(CardProjeto(p, self))
 
     def openWindow(self, i):
         self.stackedWidget.setCurrentIndex(i)
 
-    def new_proj(self):
-        self.stackedWidget.insertWidget(2, Projeto(self))
+    def new_proj(self, proj=None):
+        self.stackedWidget.insertWidget(2, Projetos(self, proj))
         self.openWindow(2)
     
     

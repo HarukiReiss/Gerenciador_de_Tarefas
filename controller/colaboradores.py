@@ -21,40 +21,40 @@ class Colaboradores(QWidget):
         self.tabela_colab.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.tabela_colab.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
 
-        self.tabela_colab.setEditTrigger(QTableWidget.NoEditTrigger)
+        self.tabela_colab.setEditTriggers(QTableWidget.NoEditTriggers)
         self.tabela_colab.setSelectionBehavior(QTableWidget.SelectRows)
 
-        self.tabela.clicked.connect(self.click)
+        self.tabela_colab.clicked.connect(self.click)
     
     def carregar_dados(self):
         self.lista_colab = colaborador_dao.selectAll()
 
         self.limpar()
-        self.tabela.setRowCount(0)
+        self.tabela_colab.setRowCount(0)
         for c in self.lista_colab:
             self.addLine(c)
 
     def addLine(self, c):
-        rowCount = self.tabela.rowCount()
-        self.tabela.insertRow(rowCount)
+        rowCount = self.tabela_colab.rowCount()
+        self.tabela_colab.insertRow(rowCount)
 
         id = QTableWidgetItem(str(c.id))
         nome = QTableWidgetItem(c.nome)
         email = QTableWidgetItem(c.email)
 
-        self.tabela.setItem(rowCount, 0, id)
-        self.tabela.setItem(rowCount, 1, nome)
-        self.tabela.setItem(rowCount, 2, email)
+        self.tabela_colab.setItem(rowCount, 0, id)
+        self.tabela_colab.setItem(rowCount, 1, nome)
+        self.tabela_colab.setItem(rowCount, 2, email)
 
     def click(self):
-        clicked_row = self.tabela.currentRow()
+        clicked_row = self.tabela_colab.currentRow()
         self.colab_atual = self.lista_colab[clicked_row]
         self.nome_edit.setText(self.colab_atual.nome)
         self.email_edit.setText(self.colab_atual.email)
 
     def save_colab(self):
         nome = self.nome_edit.text()
-        email = self.email.edit.text()
+        email = self.email_edit.text()
         colab = Colaborador(None, nome, email)
 
         if nome != '' and email != '':
@@ -63,6 +63,11 @@ class Colaboradores(QWidget):
             else:
                 colab.id = self.colab_atual.id
                 colaborador_dao.update(colab)
+
+    def limpar(self):
+        self.nome_edit.clear()
+        self.email_edit.clear()
+        self.colab_atual = None
 
     def del_colab(self):
         if self.colab_atual != None:
