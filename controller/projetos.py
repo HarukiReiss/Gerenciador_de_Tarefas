@@ -1,7 +1,10 @@
 from qt_core import *
+from controller.card_task import CardTasks
 import model.colaborador_dao as colab_dao
 import model.projeto_dao as proj_dao
+import model.tarefa_dao as task_dao
 from model.projeto import Projeto
+from model.tarefa import Tarefa
 
 class Projetos(QWidget):
     def __init__(self, parent, projeto=None):
@@ -25,6 +28,7 @@ class Projetos(QWidget):
         if self.p != False:
             self.project_name_edit.setText(self.p.nome)
             self.project_desc_edit.setText(self.p.descricao)
+            self.carrega_tasks(projeto)
         else:
             self.excluir.hide()
 
@@ -34,6 +38,16 @@ class Projetos(QWidget):
         for c in self.lista_colabs:
             temp_lista.append(c.nome)
         self.colab_add.addItems(temp_lista)
+
+    def carrega_tasks(self, projeto):
+        for i in reversed(range(self.painel_tasks.count())):
+            self.painel_tasks.itemAt(i).widget().deleteLater()
+        proj_id = projeto.id
+        temp_lista = task_dao.selectAll(proj_id)
+        
+        for t in temp_lista:
+            self.painel_tasks.addWidget(CardTasks(t))
+
 
     def addColab(self):
         i = self.colab_add.currentIndex()
@@ -58,7 +72,14 @@ class Projetos(QWidget):
         return False
 
     def addTask(self):
-        pass
+        nome = self.task_name.text()
+        desc = self.task_desc.text()
+        if (self.finalizado.isChecked()):
+            state = 1
+        elif (self.pendente.isChecked()):
+            state = 0
+        colab = len(self.lista_add_colabs)
+        proj_id = self.p.id
 
     def saveProject(self):
         nome = self.project_name_edit.text()

@@ -11,7 +11,6 @@ class CardProjeto(QWidget):
         self.nome.setText(self.p.nome)
         
     def mousePressEvent(self, event):
-        print('Projeto: ', self.p.nome)
         self.parent.new_proj(self.p)
 
 
