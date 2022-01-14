@@ -7,9 +7,9 @@ def add_task(tarefa):
     try:
         conn = database.connect()
         cursor = conn.cursor()
-        sql = """INSERT INTO Tarefas (nome, descricao, status, project_id, colab)
-                VALUES (?, ?, ?, ?, ?)"""
-        cursor.execute(sql, Tarefa.get_task())
+        sql = """INSERT INTO Tarefas (nome, descricao, status, colab)
+                VALUES (?, ?, ?, ?)"""
+        cursor.execute(sql, tarefa.get_task())
         conn.commit()
     except Exception as e:
         print("Ocorreu um erro!")
@@ -22,11 +22,11 @@ def selectAll(proj_id):
     try:
         conn = database.connect()
         cursor = conn.cursor()
-        sql = """SELECT * FROM Tarefas WHERE project_id=?"""
-        cursor.execute(sql, [proj_id])
+        sql = """SELECT * FROM Tarefas"""
+        cursor.execute(sql)
         result = cursor.fetchall()
         for c in result:
-            new_task = Tarefa(c[0], c[1], c[2], c[3], c[4], c[5])
+            new_task = Tarefa(c[0], c[1], c[2], c[3], c[4])
             t_list.append(new_task)
     except Exception as e:
         print(e)

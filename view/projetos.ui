@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>774</width>
+    <width>735</width>
     <height>855</height>
    </rect>
   </property>
@@ -17,23 +17,23 @@
    <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(54, 54, 54);</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_7">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="project_name">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Nome do Projeto&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="project_name_edit">
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);</string>
-       </property>
-      </widget>
-     </item>
+    <widget class="QLabel" name="project_name">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Nome do Projeto&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="project_name_edit">
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="project_desc">
        <property name="text">
@@ -213,7 +213,7 @@ background-color: rgb(153, 139, 255);</string>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="task_list">
+    <widget class="QLabel" name="lista_de_tarefas">
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Lista de Tarefas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -232,8 +232,8 @@ background-color: rgb(153, 139, 255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>754</width>
-        <height>467</height>
+        <width>715</width>
+        <height>486</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -285,9 +285,8 @@ background-color: rgb(153, 139, 255);</string>
    </item>
   </layout>
   <zorder>scrollArea</zorder>
-  <zorder>task_list</zorder>
+  <zorder>lista_de_tarefas</zorder>
   <zorder>task_add</zorder>
-  <zorder>task_desc</zorder>
  </widget>
  <resources/>
  <connections/>

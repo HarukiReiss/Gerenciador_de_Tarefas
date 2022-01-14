@@ -6,3 +6,6 @@ class Projeto():
         self.descricao = descricao
         self.lista_tarefas = lista_tarefas
         
+    def getProject(self):
+        return [self.nome, self.descricao]
+

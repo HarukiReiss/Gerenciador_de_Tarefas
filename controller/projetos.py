@@ -15,6 +15,7 @@ class Projetos(QWidget):
         self.p = projeto
         self.lista_colabs = []
         self.lista_add_colabs = []
+        self.lista_tasks = []
         
         
         self.carrega_dados()
@@ -42,12 +43,17 @@ class Projetos(QWidget):
     def carrega_tasks(self, projeto):
         for i in reversed(range(self.painel_tasks.count())):
             self.painel_tasks.itemAt(i).widget().deleteLater()
-        proj_id = projeto.id
-        temp_lista = task_dao.selectAll(proj_id)
-        
-        for t in temp_lista:
+        lista = self.p.lista_tarefas
+        for t in lista:
             self.painel_tasks.addWidget(CardTasks(t))
 
+    def carrega_t(self):
+        for i in reversed(range(self.painel_tasks.count())):
+            self.painel_tasks.itemAt(i).widget().deleteLater()
+
+        lista = self.lista_tasks
+        for t in lista:
+            self.painel_tasks.addWidget(CardTasks(t))
 
     def addColab(self):
         i = self.colab_add.currentIndex()
@@ -75,11 +81,13 @@ class Projetos(QWidget):
         nome = self.task_name.text()
         desc = self.task_desc.text()
         if (self.finalizado.isChecked()):
-            state = 1
+            status = 1
         elif (self.pendente.isChecked()):
-            state = 0
+            status = 0
         colab = len(self.lista_add_colabs)
-        proj_id = self.p.id
+        task_dao.add_task(Tarefa(None, nome, desc, status, colab))
+        self.lista_tasks.append(Tarefa(None, nome, desc, status, colab))
+        self.carrega_t
 
     def saveProject(self):
         nome = self.project_name_edit.text()

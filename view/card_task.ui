@@ -51,7 +51,7 @@ background-color: rgb(83, 79, 145);</string>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="state">
+         <widget class="QLabel" name="status">
           <property name="text">
            <string>Status</string>
           </property>

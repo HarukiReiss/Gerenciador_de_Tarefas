@@ -8,8 +8,8 @@ class CardTasks(QWidget):
         self.t = tarefa
         self.nome.setText(self.t.nome)
         self.desc.setText(self.t.desc)
-        self.colab.setText(str(tarefa.project_id))
-        if self.t.state == 1:
-            self.state.setText('Concluída!')
-        elif self.t.state == 0:
-            self.state.setText('Em andamento...')
+        self.colab.setText(str(tarefa.lista_colab))
+        if self.t.status == 1:
+            self.status.setText('Concluída!')
+        elif self.t.status == 0:
+            self.status.setText('Em andamento...')

@@ -5,7 +5,7 @@ from model.projeto_dao import createTableProjeto
 
 
 def connect():
-    conn = sqlite3.connect('database/gprojetos.sqlite')
+    conn = sqlite3.connect('database/projeto.sqlite')
     return conn
 
 def createDB():
